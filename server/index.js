@@ -22,7 +22,7 @@ app.post("/Emails", async (req, res) => {
         channel:req.body.channel
       }
       const newEmail = await pool.query(
-        `INSERT INTO Emails (mail,channel) VALUES(${data.mail},${data.channel}) RETURNING *`
+        `INSERT INTO Emails (mail,channel) VALUES('${data.mail}','${data.channel}') RETURNING *`
       );
   
       res.json(newEmail.rows[0]);
